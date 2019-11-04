@@ -1,0 +1,1 @@
+# sbt-guardrail-scala-codegen-example
