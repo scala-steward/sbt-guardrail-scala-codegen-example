@@ -2,10 +2,8 @@ package helloworld
 
 import scala.concurrent.Future
 import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
-import akka.stream.Materializer
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
-import cats.implicits._
 
 object Hello {
   def main(args: Array[String]) = {
@@ -47,12 +45,12 @@ class DummyUserHandler
   import scala.collection._
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  def createUser(respond: UserResource.createUserResponse.type)(body: User): scala.concurrent.Future[UserResource.createUserResponse] = ???
-  def createUsersWithArrayInput(respond: UserResource.createUsersWithArrayInputResponse.type)(body: IndexedSeq[User]): scala.concurrent.Future[UserResource.createUsersWithArrayInputResponse] = ???
-  def createUsersWithListInput(respond: UserResource.createUsersWithListInputResponse.type)(body: IndexedSeq[User]): scala.concurrent.Future[UserResource.createUsersWithListInputResponse] = ???
-  def loginUser(respond: UserResource.loginUserResponse.type)(username: String, password: String): scala.concurrent.Future[UserResource.loginUserResponse] = ???
-  def logoutUser(respond: UserResource.logoutUserResponse.type)(): scala.concurrent.Future[UserResource.logoutUserResponse] = ???
-  def getUserByName(respond: UserResource.getUserByNameResponse.type)(username: String): scala.concurrent.Future[UserResource.getUserByNameResponse] = {
+  override def createUser(respond: UserResource.createUserResponse.type)(body: User): scala.concurrent.Future[UserResource.createUserResponse] = ???
+  override def createUsersWithArrayInput(respond: UserResource.createUsersWithArrayInputResponse.type)(body: Vector[User]): scala.concurrent.Future[UserResource.createUsersWithArrayInputResponse] = ???
+  override def createUsersWithListInput(respond: UserResource.createUsersWithListInputResponse.type)(body: Vector[User]): scala.concurrent.Future[UserResource.createUsersWithListInputResponse] = ???
+  override def loginUser(respond: UserResource.loginUserResponse.type)(username: String, password: String): scala.concurrent.Future[UserResource.loginUserResponse] = ???
+  override def logoutUser(respond: UserResource.logoutUserResponse.type)(): scala.concurrent.Future[UserResource.logoutUserResponse] = ???
+  override def getUserByName(respond: UserResource.getUserByNameResponse.type)(username: String): scala.concurrent.Future[UserResource.getUserByNameResponse] = {
     val user = new User(
       id = Some(1234),
       username = Some(username),
@@ -61,6 +59,6 @@ class DummyUserHandler
       email = Some(username + "@example.com"))
     Future { UserResource.getUserByNameResponseOK(user) }
   }
-  def updateUser(respond: UserResource.updateUserResponse.type)(username: String, body: User): scala.concurrent.Future[UserResource.updateUserResponse] = ???
-  def deleteUser(respond: UserResource.deleteUserResponse.type)(username: String): scala.concurrent.Future[UserResource.deleteUserResponse] = ???
+  override def updateUser(respond: UserResource.updateUserResponse.type)(username: String, body: User): scala.concurrent.Future[UserResource.updateUserResponse] = ???
+  override def deleteUser(respond: UserResource.deleteUserResponse.type)(username: String): scala.concurrent.Future[UserResource.deleteUserResponse] = ???
 }
