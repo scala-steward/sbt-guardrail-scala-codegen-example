@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http"   % "10.2.4",
-  "com.typesafe.akka" %% "akka-stream" % "2.6.13",
+  "com.typesafe.akka" %% "akka-stream" % "2.6.14",
   "javax.xml.bind"     % "jaxb-api"    % "2.3.1",
   "org.scalatest"     %% "scalatest"   % "3.2.7" % "test"
 )
